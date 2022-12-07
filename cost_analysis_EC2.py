@@ -3,14 +3,47 @@ import boto3
 import pandas as pd
 import pickle
 
+import os
+
+def clear():
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        os.system("clear")
+
+
+
+
+
+
 client = boto3.client('pricing', region_name='us-east-1')
+
+print('################################################################################################################################')
+print('ingrese el SO: ej--> Linux')
+operatingSystem = input()
+print()
+clear()
+print('################################################################################################################################')
+print()
+clear()
+print('################################################################################################################################')
+print('ingrese la region: ej--> US East (N. Virginia)')
+location = input()
+print('################################################################################################################################')
+print()
+clear()
+print('################################################################################################################################')
+print('ingrese la instancia: ej--> t2.small , t2.nano, c5.large, c5.2xlarge, etc')
+instanceType = input()
+print('################################################################################################################################')
+clear()
 
 response = client.get_products(
     ServiceCode='AmazonEC2',
     Filters=[
-        {'Type': 'TERM_MATCH', 'Field': 'operatingSystem', 'Value': 'Linux'},
-        {'Type': 'TERM_MATCH', 'Field': 'location', 'Value': 'US East (N. Virginia)'},
-        {'Type': 'TERM_MATCH', 'Field': 'instanceType', 'Value': 't2.small'},
+        {'Type': 'TERM_MATCH', 'Field': 'operatingSystem', 'Value': operatingSystem },
+        {'Type': 'TERM_MATCH', 'Field': 'location', 'Value': location},
+        {'Type': 'TERM_MATCH', 'Field': 'instanceType', 'Value': instanceType},
         {'Type': 'TERM_MATCH', 'Field': 'tenancy', 'Value': 'Shared'},
         {'Type': 'TERM_MATCH', 'Field': 'preInstalledSw', 'Value': 'NA'}
     ]
@@ -23,16 +56,16 @@ for pricelist_json in response["PriceList"]:
     cantProd +=1
     pricelist = json.loads(pricelist_json)
     dataframe = pd.DataFrame(pricelist)
-    jsonArch = dataframe.to_json(f'price_t2_small{cantProd}.json')
+    jsonArch = dataframe.to_json(f'price_{instanceType}{cantProd}.json')
 
 
     with open(f'datos{cantProd}.json', 'w') as fp:
         json.dump(pricelist, fp, ensure_ascii=False)
 
 
-df_json1 = pd.read_json('price_t2_small1.json',orient='index')
-df_json2 = pd.read_json('price_t2_small2.json',orient='index')
-df_json3 = pd.read_json('price_t2_small3.json',orient='index')
+df_json1 = pd.read_json(f'price_{instanceType}1.json',orient='index')
+df_json2 = pd.read_json(f'price_{instanceType}2.json',orient='index')
+df_json3 = pd.read_json(f'price_{instanceType}3.json',orient='index')
 df = pd.concat([df_json1,df_json2,df_json3])
 
 
@@ -421,7 +454,22 @@ for i in dict_offerinClass:
 
 
 dict_offerinClass = pd.DataFrame(dict_offerinClass)
-dict_offerinClass.to_csv('data_analysis_con_null.csv')
+data_analysis_con_null = dict_offerinClass.to_csv('data_analysis_con_null.csv')
+data_analysis_con_null
 
 dict_offerinClass.fillna(method='ffill', inplace=True)
-dict_offerinClass.to_csv('data_analysis_sin_null.csv')
+data_analysis_sin_null = dict_offerinClass.to_csv('data_analysis_sin_null.csv')
+data_analysis_sin_null
+
+
+
+print('################################################################################################################################')
+print(f'el archivo csv se creo con exito!, se creo uno con archivos nulos, otro sin archivos nulos  otro con la lista de precios sin calculos')
+print('tambien se crearon archivos json para su futura aplicacion o analisis de datos')
+print(f'nombre de tablas sin archivos nulos--> data_analysis_sin_null.csv')
+print(f'nombre de tabla con archivos nulos --> data_analysis_con_null.csv')
+print(f'nombre del archivo de lista de precios sin caldulos apiDatosLimpios.csv')
+print(f'nombres de los archivos json--> price_{instanceType}1.json')
+print(f'nombres de los archivos json--> price_{instanceType}2.json')
+print(f'nombres de los archivos json--> price_{instanceType}3.json')
+print('################################################################################################################################')
