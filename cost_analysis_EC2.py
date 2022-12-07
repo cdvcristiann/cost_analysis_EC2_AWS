@@ -319,7 +319,7 @@ datasOndemand = {}
 
 for x in onDemand:
   for y in x.values():
-    print(x)
+    #print(x)
     priceDimensions=y['priceDimensions']
     termAttributes=y['termAttributes']
     for z in priceDimensions.values():
