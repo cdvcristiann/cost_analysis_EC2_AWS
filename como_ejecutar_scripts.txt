@@ -1,0 +1,21 @@
+primeramente instalar python con todas sus dependencia de pip.
+
+crear un entorno--> python -m venv nombreEntorno
+
+activar entorno--> en linux --> source nombreEntorno/bin/activate
+
+luego instalar los requerimientos:--->  pip install -r requirements.txt 
+
+luego ejecutar el archivo .py -->  en linux --> pytho3 cost_analisys.py
+
+
+una vez intalado python con pip... para usar el scripts, siempre activar el entorno creado y correr el scripts.
+ejemplo --> source nombreEntorno/bin/activate
+	--> pytho3 cost_analisys.py 
+
+
+
+
+
+datos extras---> siempre para activar el entorno ir hasta donde se encuentra la carpeta de entorno, pero no ingresar..
+-------------->para instalar los requerimientos debe estar en la carpeta donde contiene el archivo requiremens
