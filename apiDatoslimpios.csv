@@ -1,0 +1,20 @@
+,unit,description,pricePerUnit,LeaseContractLength,OfferingClass,PurchaseOption
+0,Hrs,$0.023 per Unused Reservation Linux t2.small Instance Hour,0.0230000000,,On Demand,
+0,Hrs,$0.023 per On Demand Linux t2.small Instance Hour,0.0230000000,,On Demand,
+0,Hrs,$0.00 per Reservation Linux t2.small Instance Hour,0.0000000000,,On Demand,
+0,Quantity,Upfront Fee,60,1yr,standard,Partial Upfront
+0,Hrs,"Linux/UNIX (Amazon VPC), t2.small reserved instance applied",0.0068000000,1yr,standard,Partial Upfront
+0,Quantity,Upfront Fee,135,1yr,convertible,All Upfront
+0,Hrs,"Linux/UNIX (Amazon VPC), t2.small reserved instance applied",0.0000000000,3yr,standard,All Upfront
+0,Hrs,"Linux/UNIX (Amazon VPC), t2.small reserved instance applied",0.0100000000,3yr,standard,No Upfront
+0,Hrs,"Linux/UNIX (Amazon VPC), t2.small reserved instance applied",0.0079000000,1yr,convertible,Partial Upfront
+0,Quantity,Upfront Fee,69,1yr,convertible,Partial Upfront
+0,Hrs,"Linux/UNIX (Amazon VPC), t2.small reserved instance applied",0.0144000000,1yr,standard,No Upfront
+0,Hrs,"Linux/UNIX (Amazon VPC), t2.small reserved instance applied",0.0165000000,1yr,convertible,No Upfront
+0,Quantity,Upfront Fee,140,3yr,convertible,Partial Upfront
+0,Hrs,"Linux/UNIX (Amazon VPC), t2.small reserved instance applied",0.0053000000,3yr,convertible,Partial Upfront
+0,Hrs,"Linux/UNIX (Amazon VPC), t2.small reserved instance applied",0.0046000000,3yr,standard,Partial Upfront
+0,Quantity,Upfront Fee,122,3yr,standard,Partial Upfront
+0,Hrs,"Linux/UNIX (Amazon VPC), t2.small reserved instance applied",0.0115000000,3yr,convertible,No Upfront
+0,Quantity,Upfront Fee,118,1yr,standard,All Upfront
+0,Quantity,Upfront Fee,229,3yr,standard,All Upfront
